@@ -14,6 +14,12 @@ public class Member {
     //@Column(name = "username") 컬럼명이 클래스 변수와 달라도 지정해 줄 수 있다다
    private String name;
 
+   public Member(){}//jpa는 기본적으로 내부적으로 리플렉션같은 것을 쓰기 때문에 동적으로 객체를 생성해내야 한다-> 기본생성자가 필요하다
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
