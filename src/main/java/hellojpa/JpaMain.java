@@ -17,12 +17,12 @@ public class JpaMain {
 
         try {
             //영속
-            Member member = new Member(200L,"member200");
+            Member member = new Member();
+            member.setId(2L);
+            member.setUsername("B");
+            member.setRoleType(RoleType.ADMIN);
             em.persist(member);
-            
-            em.flush();//커밋되기전에 확인하고 싶을 때 강제로 호출해서 확인할 수 있다
 
-            System.out.println("=========================");
 
             tx.commit();
         }catch (Exception e){
