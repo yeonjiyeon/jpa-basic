@@ -17,8 +17,10 @@ public class JpaMain {
 
         try {
             //영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("zzz");
+            Member member = new Member(200L,"member200");
+            em.persist(member);
+            
+            em.flush();//커밋되기전에 확인하고 싶을 때 강제로 호출해서 확인할 수 있다
 
             System.out.println("=========================");
 

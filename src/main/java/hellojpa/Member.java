@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Member")//디폴트값은 클래스명과 동일하다 보통 축약어를 사용하기도 한다 예 )MBR
 //@Table(name = "USER") 쿼리값을 넣어줄 테이블명을 변경할 수 있다 디폴트는 클래스명
 public class Member {
     @Id
@@ -13,6 +13,7 @@ public class Member {
 
     //@Column(name = "username") 컬럼명이 클래스 변수와 달라도 지정해 줄 수 있다다
    private String name;
+    private int age;
 
    public Member(){}//jpa는 기본적으로 내부적으로 리플렉션같은 것을 쓰기 때문에 동적으로 객체를 생성해내야 한다-> 기본생성자가 필요하다
     public Member(Long id, String name) {
