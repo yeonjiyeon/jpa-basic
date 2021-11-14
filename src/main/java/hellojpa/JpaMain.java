@@ -27,12 +27,14 @@ public class JpaMain {
             em.persist(member);
 
             em.flush();
-            em.clear();
+            em.clear();//캐시에서가 아니라 디비에서 가져오게 하기 위해
 
             Member findMember = em.find(Member.class, member.getId());
 
-            Team findTeam = findMember.getTeam();
-            System.out.println("findTeam.getName() = " + findTeam.getName());
+            List<Member> members = findMember.getTeam().getMembers();
+            for (Member m : members){
+                System.out.println("m.getUsername() = " + m.getUsername());
+            }
 
 
             tx.commit();
