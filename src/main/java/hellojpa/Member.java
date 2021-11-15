@@ -29,6 +29,7 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+        //team.getMembers().add(this);
     }
 
     public Long getId() {
@@ -46,5 +47,13 @@ public class Member {
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
+//    @Override
+//    public String toString() {
+//        return "Member{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", team=" + team +//team의 toString을 호출 -> team에서도 member의 toString 호출 -> 무한 루프,,,,
+//                '}';
+//    }
 }

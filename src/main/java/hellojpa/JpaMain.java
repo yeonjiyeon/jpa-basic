@@ -23,12 +23,16 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.setTeam(team);//**
             em.persist(member);
+
+            team.addMember(member);
+            //team.getMembers().add(member);
 
             em.flush();
             em.clear();//캐시에서가 아니라 디비에서 가져오게 하기 위해
 
+            Team findTeam = em.find(Team.class, team.getId());//1차 캐시
             Member findMember = em.find(Member.class, member.getId());
 
             List<Member> members = findMember.getTeam().getMembers();
