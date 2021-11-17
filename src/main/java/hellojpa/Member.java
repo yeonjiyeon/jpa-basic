@@ -19,7 +19,7 @@ public class Member {
 //    @Column(name = "TEAM_ID")
 //    private Long teamId;
 
-    @ManyToOne//멤버입장에서(앞)
+    @ManyToOne//멤버입장에서(앞) 다대일 양방향
     @JoinColumn(name = "TEAM_ID")//외래키와 매핑
     private Team team;//직접 가져오는 것으로 바꿈
 
