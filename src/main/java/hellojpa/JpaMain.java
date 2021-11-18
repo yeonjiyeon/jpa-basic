@@ -17,29 +17,39 @@ public class JpaMain {
 
         try {
             //저장
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setTeam(team);//**
-            em.persist(member);
-
-            team.addMember(member);
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setUsername("member1");
+//            member.setTeam(team);//**
+//            em.persist(member);
+//
+//            team.addMember(member);
             //team.getMembers().add(member);
 
-            em.flush();
-            em.clear();//캐시에서가 아니라 디비에서 가져오게 하기 위해
+//            em.flush();
+//            em.clear();//캐시에서가 아니라 디비에서 가져오게 하기 위해
 
-            Team findTeam = em.find(Team.class, team.getId());//1차 캐시
-            Member findMember = em.find(Member.class, member.getId());
+//            Team findTeam = em.find(Team.class, team.getId());//1차 캐시
+//            Member findMember = em.find(Member.class, member.getId());
+//
+//            List<Member> members = findMember.getTeam().getMembers();
+//            for (Member m : members){
+//                System.out.println("m.getUsername() = " + m.getUsername());
+//            }
+            Member member = new Member();
+            member.setUsername("member1");
 
-            List<Member> members = findMember.getTeam().getMembers();
-            for (Member m : members){
-                System.out.println("m.getUsername() = " + m.getUsername());
-            }
+            em.persist(member);
 
+            Team team = new Team();
+            team.setName("teamA");
+            //
+            team.getMembers().add(member);
+
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e) {
