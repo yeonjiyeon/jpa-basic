@@ -39,17 +39,29 @@ public class JpaMain {
 //            for (Member m : members){
 //                System.out.println("m.getUsername() = " + m.getUsername());
 //            }
-            Member member = new Member();
-            member.setUsername("member1");
+//            Member member = new Member();
+//            member.setUsername("member1");
+//
+//            em.persist(member);
+//
+//            Team team = new Team();
+//            team.setName("teamA");
+//            //
+//            team.getMembers().add(member);
+//
+//            em.persist(team);
+            Movie movie = new Movie();
+            movie.setDirect("aaaa");
+            movie.setActor("bbbb");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
 
-            em.persist(member);
+            em.persist(movie);
 
-            Team team = new Team();
-            team.setName("teamA");
-            //
-            team.getMembers().add(member);
+            em.flush();
+            em.clear();
 
-            em.persist(team);
+            em.find(Movie.class, movie.getId());
 
             tx.commit();
         } catch (Exception e) {
