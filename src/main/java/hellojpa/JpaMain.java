@@ -18,20 +18,16 @@ public class JpaMain {
 
         try {
 
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Member member = new Member();
+            member.setUsername("hello");
+            member.setHomeAddress(new Address("city", "street", "zipcode"));
+            member.setWorkPeriod(new Period());
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);//cascade사용시 자동으로 아래 적용
+            em.persist(member);
 
             em.flush();
             em.clear();
 
-            Parent findParent = em.find(Parent.class, parent.getId());
-            findParent.getChildList().remove(0);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
